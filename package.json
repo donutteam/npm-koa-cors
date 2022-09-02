@@ -1,0 +1,27 @@
+{
+  "name": "@donutteam/koa-cors",
+  "version": "1.0.0",
+  "description": "A class for creating Koa middlewares that set CORS headers.",
+  "main": "./index.js",
+  "scripts": {
+    "lint": "eslint . -c ./.eslintrc.cjs",
+    "lint-fix": "eslint . -c ./.eslintrc.cjs --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/donutteam/koa-cors.git"
+  },
+  "keywords": [
+    "koa",
+    "koa-middleware",
+    "middleware",
+    "cors"
+  ],
+  "author": "Donut Team",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@donutteam/eslint-config": "^1.0.6",
+    "eslint": "^8.23.0"
+  }
+}
