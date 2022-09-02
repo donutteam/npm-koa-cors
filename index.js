@@ -3,7 +3,7 @@
 //
 
 /**
- * @typedef {Object} CrossOriginRequestSharingMiddlewareOptions
+ * @typedef {Object} CrossOriginResourceSharingMiddlewareOptions
  * @property {Array<String>} [allowCredentialsOrigins] A list of origins that can submit credentials.
  */
 
@@ -14,7 +14,7 @@
 /**
  * A class for creating Koa middlewares that allow cross origin requests from Donut Team domains.
  */
-export class CrossOriginRequestSharingMiddleware
+export class CrossOriginResourceSharingMiddleware
 {
 	/**
 	 * The middleware function.
@@ -26,7 +26,7 @@ export class CrossOriginRequestSharingMiddleware
 	/**
 	 * Constructs a new CrossOriginRequestSharingMiddleware.
 	 *
-	 * @param {CrossOriginRequestSharingMiddlewareOptions} options Options for the middleware.
+	 * @param {CrossOriginResourceSharingMiddlewareOptions} options Options for the middleware.
 	 * @author Loren Goodwin
 	 */
 	constructor(options)
