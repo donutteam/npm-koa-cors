@@ -2,10 +2,12 @@
   "name": "@donutteam/koa-cors",
   "version": "1.0.1",
   "description": "A class for creating Koa middlewares that set CORS headers.",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "scripts": {
+    "build": "npx rimraf lib && npx tsc",
     "lint": "eslint . -c ./.eslintrc.cjs",
-    "lint-fix": "eslint . -c ./.eslintrc.cjs --fix"
+    "lint-fix": "eslint . -c ./.eslintrc.cjs --fix",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,12 @@
   "license": "MIT",
   "type": "module",
   "devDependencies": {
-    "@donutteam/eslint-config": "^1.0.6",
-    "eslint": "^8.23.0"
+    "@donutteam/eslint-config": "^2.0.0",
+    "@types/koa": "^2.13.6",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.39.0",
+    "koa": "^2.14.2",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4"
   }
 }

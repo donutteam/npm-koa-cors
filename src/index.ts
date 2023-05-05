@@ -1,36 +1,37 @@
 //
-// Type Definitions
+// Imports
 //
 
-/**
- * @typedef {Object} CrossOriginResourceSharingMiddlewareOptions
- * @property {Array<String>} [allowCredentialsOrigins] A list of origins that can submit credentials.
- */
+import type { Middleware } from "koa";
 
 //
 // Middleware
 //
 
-/**
- * A class for creating Koa middlewares that allow cross origin requests from Donut Team domains.
- */
+export interface CrossOriginResourceSharingMiddlewareOptions
+{
+	/** A list of origins that can submit credentials. */
+	allowCredentialsOrigins?: string[];
+}
+
+/** A class for creating Koa middlewares that allow cross origin requests from Donut Team domains.*/
 export class CrossOriginResourceSharingMiddleware
 {
-	/**
-	 * The middleware function.
-	 * 
-	 * @type {import("koa").Middleware}
-	 */
-	execute;
+	/** A list of origins that can submit credentials. */
+	allowCredentialsOrigins : string[];
+
+	/** The middleware function. */
+	execute : Middleware;
 
 	/**
 	 * Constructs a new CrossOriginRequestSharingMiddleware.
-	 *
-	 * @param {CrossOriginResourceSharingMiddlewareOptions} options Options for the middleware.
+	 * 
 	 * @author Loren Goodwin
 	 */
-	constructor(options)
+	constructor(options : CrossOriginResourceSharingMiddlewareOptions)
 	{
+		this.allowCredentialsOrigins = options?.allowCredentialsOrigins ?? [];
+
 		this.execute = async (context, next) =>
 		{
 			//
@@ -49,7 +50,7 @@ export class CrossOriginResourceSharingMiddleware
 			// Set CORS Headers
 			//
 
-			if (options?.allowCredentialsOrigins?.indexOf(origin) != -1)
+			if (this.allowCredentialsOrigins?.indexOf(origin) != -1)
 			{
 				context.response.set("Access-Control-Allow-Credentials", "true");
 				context.response.set("Access-Control-Allow-Origin", origin);
@@ -67,7 +68,7 @@ export class CrossOriginResourceSharingMiddleware
 			if (context.method == "OPTIONS")
 			{
 				context.response.set("Access-Control-Allow-Headers", context.request.get("Access-Control-Request-Headers"));
-				context.status = 204;
+				context.response.status = 204;
 				return;
 			}
 
